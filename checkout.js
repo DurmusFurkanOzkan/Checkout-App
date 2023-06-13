@@ -58,15 +58,18 @@ productList.addEventListener("click", (e) =>{
 
         if(e.target.nextElementSibling.innerText > 1){
             e.target.nextElementSibling.innerText--;
+            calculateProductPrice();
+            
         }
         
         else{
             if(confirm(`${e.target.closest(".main__product-info").querySelector("h2").innerText} will be removed!`)){
                 e.target.closest(".main__product").remove();
             }
+           
         }
-        console.log(document);
-        calculateProductPrice();
+        
+        
 
     }
 
@@ -81,6 +84,9 @@ productList.addEventListener("click", (e) =>{
     //*remove
 
     else if(e.target.id == "remove-product"){
+        if(confirm(`${e.target.closest(".main__product-info").querySelector("h2").innerText} will be removed!`)){
+            e.target.closest(".main__product").remove();
+        }
     }
 
     else{
