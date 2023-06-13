@@ -55,8 +55,17 @@ productList.addEventListener("click", (e) =>{
     //*minus
 
     if(e.target.className == "fa-solid fa-minus"){
-        alert("minus")
-        calculateCardPrice();
+
+        if(e.target.nextElementSibling.innerText > 1){
+            e.target.nextElementSibling.innerText--;
+        }
+        
+        else{
+            if(confirm(`${e.target.closest(".main__product-info").querySelector("h2").innerText} will be removed!`)){
+                e.target.closest(".main__product").remove();
+            }
+        }
+        console.log(document);
         calculateProductPrice();
 
     }
@@ -65,21 +74,19 @@ productList.addEventListener("click", (e) =>{
 
     //? en effective'i classList ve id ile kullanmak
     else if(e.target.classList.contains("fa-plus")){
-        alert("plus");
-        calculateCardPrice();
+        e.target.previousElementSibling.innerText++;
         calculateProductPrice();
     }
 
     //*remove
 
     else if(e.target.id == "remove-product"){
-        alert("remove clicked");
-        calculateCardPrice();
     }
 
     else{
-        alert("other element")
     }
+    
+    calculateCardPrice();
 });
 
 
