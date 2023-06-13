@@ -38,10 +38,12 @@ navbarList.addEventListener("click",(e) =>{
 
         e.currentTarget.firstElementChild.innerText = "My Cart";
         
-        productList.childNodes.forEach(product => {
-            product.remove();
-        });
+        // productList.childNodes.forEach(product => {
+        //     product.remove();
+        // });
         
+        productList.innerHTML="No Product "
+        calculateCardPrice();
 
 
     }
@@ -54,12 +56,49 @@ productList.addEventListener("click", (e) =>{
 
     if(e.target.className == "fa-solid fa-minus"){
         alert("minus")
+        calculateCardPrice();
+        calculateProductPrice();
+
     }
-    
+
     //*plus
 
+    //? en effective'i classList ve id ile kullanmak
+    else if(e.target.classList.contains("fa-plus")){
+        alert("plus");
+        calculateCardPrice();
+        calculateProductPrice();
+    }
 
-})
+    //*remove
+
+    else if(e.target.id == "remove-product"){
+        alert("remove clicked");
+        calculateCardPrice();
+    }
+
+    else{
+        alert("other element")
+    }
+});
+
+
+//* bubbling childdaki işlemleri parenta yapabilmek
+//* capturing parenttaki işlemleri childa yapabilmek
+
+const calculateProductPrice = () =>{
+
+    //*product line calculations
+
+
+}
+
+const calculateCardPrice = () =>{
+
+    //*card line calculations
+
+
+}
 
 
 
