@@ -58,7 +58,7 @@ productList.addEventListener("click", (e) =>{
 
         if(e.target.nextElementSibling.innerText > 1){
             e.target.nextElementSibling.innerText--;
-            calculateProductPrice();
+            calculateProductPrice(e.target);
             
         }
         
@@ -78,7 +78,7 @@ productList.addEventListener("click", (e) =>{
     //? en effective'i classList ve id ile kullanmak
     else if(e.target.classList.contains("fa-plus")){
         e.target.previousElementSibling.innerText++;
-        calculateProductPrice();
+        calculateProductPrice(e.target);
     }
 
     //*remove
@@ -99,9 +99,17 @@ productList.addEventListener("click", (e) =>{
 //* bubbling childdaki işlemleri parenta yapabilmek
 //* capturing parenttaki işlemleri childa yapabilmek
 
-const calculateProductPrice = () =>{
+const calculateProductPrice = (btn) =>{
 
     //*product line calculations
+
+    const infoDiv = btn.closest(".main__product-info");
+    
+    const price = infoDiv.querySelector(".main__product-price strong").innerText;
+
+    const quantity = infoDiv.querySelector("#quantity").innerText;
+
+    infoDiv.querySelector(".main__product-line-price").innerText = (price*quantity).toFixed(2);
 
 
 }
@@ -109,7 +117,7 @@ const calculateProductPrice = () =>{
 const calculateCardPrice = () =>{
 
     //*card line calculations
-
+    productList.querySelectorAll(".main__product-line-price")
 
 }
 
